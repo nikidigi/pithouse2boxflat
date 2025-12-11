@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   saveBtn.addEventListener('click', () => {
+    const pithousePresets = JSON.parse(inputTextarea.value.trim());
     const text = outputTextarea.value || '';
     const filename = pithousePresets?.name ? `${pithousePresets.name}.yml` : 'base-presets.yml';
     const blob = new Blob([text], { type: 'text/yaml;charset=utf-8' });
