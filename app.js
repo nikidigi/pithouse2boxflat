@@ -36,6 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
   inertiaInput.value = localStorage.getItem('inertiaValue') ?? inertiaInput.value;
   roadSensitivityInput.value = localStorage.getItem('roadSensitivityValue') ?? roadSensitivityInput.value;
 
+  const getPithousePresets = (throwOnError = true) => {
+    try {
+      return JSON.parse(inputTextarea.value.trim());
+    } catch (e) {
+      if (throwOnError) {
+        throw e;
+      }
+      return null;
+    }
+  };
+
   inertiaInput.addEventListener('input', () => {
     localStorage.setItem('inertiaValue', inertiaInput.value);
   });
@@ -56,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     reader.onload = (e) => {
       inputTextarea.value = e.target.result || '';
       inputFilename.textContent = file.name;
+
+      convertBtn.click();
     };
     reader.onerror = () => {
       alert('Failed to read file.');
@@ -64,8 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   convertBtn.addEventListener('click', () => {
-    const pithousePresets = JSON.parse(inputTextarea.value.trim());
-    const boxflatPresets = pithouse2boxflat(pithousePresets, {
+    const boxflatPresets = pithouse2boxflat(getPithousePresets(), {
       'natural-inertia': inertiaInput.value * 1,
       'road-sensitivity': roadSensitivityInput.value * 10,
     });
@@ -74,12 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   saveBtn.addEventListener('click', () => {
-    let pithousePresets;
-    try {
-      pithousePresets = JSON.parse(inputTextarea.value.trim());
-    } catch (e) {
-    }
-
+    const pithousePresets = getPithousePresets(false);
     const text = outputTextarea.value || '';
     const filename = pithousePresets?.name ? `${pithousePresets.name}.yml` : 'base-presets.yml';
     const blob = new Blob([text], { type: 'text/yaml;charset=utf-8' });
