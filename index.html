@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MOZA Pit House → Boxflat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>MOZA Pit House → Boxflat</h1>
+    </div>
+    <span>pithouse2boxflat</span>
+  </header>
+
+  <div class="container">
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <div class="panel-title">Pit House presets</div>
+          <div class="panel-subtitle">Paste or load JSON from file</div>
+        </div>
+        <div class="controls">
+          <button id="browseBtn" type="button">
+            📂 Browse…
+          </button>
+
+          <button id="convertBtn" type="button">
+            🔁 Convert
+          </button>
+
+          <span id="inputFilename" class="filename"></span>
+          <input
+            type="file"
+            id="fileInput"
+            accept=".json,application/json"
+            style="display: none"
+          />
+        </div>
+      </div>
+      <div class="panel-body">
+        <textarea
+          id="inputText"
+          placeholder='Paste Moza Pit House presets JSON here or use "Browse…"'
+        ></textarea>
+        <div class="input-fields">
+          <div class="field-row">
+            <label for="inertiaInput">Steering Wheel Inertia:</label>
+            <input type="number" id="inertiaInput" value="1100" />
+          </div>
+
+          <div class="field-row">
+            <label for="roadSensitivityInput">Road Sensitivity:</label>
+            <input type="number" id="roadSensitivityInput" value="0" min="0" max="10" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <div class="panel-title">Boxflat presets</div>
+          <div class="panel-subtitle">Result to save as .yml/.yaml</div>
+        </div>
+        <div class="controls">
+          <button id="saveBtn" type="button">
+            💾 Save…
+          </button>
+          <button id="copyBtn" type="button">
+            📋 Copy
+          </button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <textarea
+          id="outputText"
+          placeholder="Converted Boxflat presets will go here"
+        ></textarea>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+  <script src="converter.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
