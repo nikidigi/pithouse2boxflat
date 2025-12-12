@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>MOZA Pit House → Boxflat</title>
+  <title>MOZA Pit House → Boxflat Converter</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Convert Moza Pit House presets to Boxflat presets online">
+  <meta name="keywords"
+    content="Moza, Pit House, Boxflat, Moza presets, Moza Racing, convert presets, simracing tools">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Pit House → Boxflat Converter">
+  <meta property="og:description"
+    content="Online tool to convert Moza Pit House presets to Boxflat presets">
+  <meta property="og:type" content="website">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
     <div>
@@ -31,19 +44,11 @@
           </button>
 
           <span id="inputFilename" class="filename"></span>
-          <input
-            type="file"
-            id="fileInput"
-            accept=".json,application/json"
-            style="display: none"
-          />
+          <input type="file" id="fileInput" accept=".json,application/json" style="display: none" />
         </div>
       </div>
       <div class="panel-body">
-        <textarea
-          id="inputText"
-          placeholder='Paste Moza Pit House presets JSON here or use "Browse…"'
-        ></textarea>
+        <textarea id="inputText" placeholder='Paste Moza Pit House presets JSON here or use "Browse…"'></textarea>
         <div class="input-fields">
           <div class="field-row">
             <label for="inertiaInput">Steering Wheel Inertia:</label>
@@ -74,10 +79,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <textarea
-          id="outputText"
-          placeholder="Converted Boxflat presets will go here"
-        ></textarea>
+        <textarea id="outputText" placeholder="Converted Boxflat presets will go here"></textarea>
       </div>
     </section>
   </div>
@@ -86,4 +88,5 @@
   <script src="converter.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
