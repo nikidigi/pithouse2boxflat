@@ -1,10 +1,4 @@
 function pithouse2boxflat(pithousePresets, basePresets = {}) {
-  // Some minimal validation
-  if (pithousePresets?.version !== 3) {
-    alert('Unsupported Pit House presets version. Only v3 is supported.');
-    return;
-  }
-
   if (pithousePresets?.deviceType !== 'Motor') {
     alert(`Unsupported device type "${pithousePresets?.deviceType}". Only wheel bases are supported.`);
     return;
