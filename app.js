@@ -36,10 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputFilename = document.getElementById('inputFilename');
 
   const inertiaInput = document.getElementById('inertiaInput');
+  const inertiaSlider = document.getElementById("inertiaSlider");
+  const inertiaPresetBtns = document.querySelectorAll(".inertiaPresetBtn")
   const roadSensitivityInput = document.getElementById('roadSensitivityInput');
-
-  inertiaInput.value = localStorage.getItem('inertiaValue') ?? inertiaInput.value;
-  roadSensitivityInput.value = localStorage.getItem('roadSensitivityValue') ?? roadSensitivityInput.value;
 
   const getPithousePresets = (throwOnError = true) => {
     try {
@@ -52,9 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  inertiaInput.value = localStorage.getItem('inertiaValue') ?? inertiaInput.value;
+  inertiaSlider.value = inertiaInput.value;
+
   inertiaInput.addEventListener('input', () => {
     localStorage.setItem('inertiaValue', inertiaInput.value);
   });
+
+  inertiaSlider.addEventListener("input", () => {
+    inertiaInput.value = inertiaSlider.value;
+    inertiaInput.dispatchEvent(new Event('input'));
+  });
+
+  inertiaPresetBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const v = btn.dataset.value;
+      inertiaSlider.value = v;
+      inertiaInput.value = v;
+      inertiaInput.dispatchEvent(new Event('input'));
+    });
+  });
+
+  roadSensitivityInput.value = localStorage.getItem('roadSensitivityValue') ?? roadSensitivityInput.value;
 
   roadSensitivityInput.addEventListener('input', () => {
     localStorage.setItem('roadSensitivityValue', roadSensitivityInput.value);

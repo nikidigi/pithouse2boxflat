@@ -162,11 +162,13 @@ footer {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 12px;
 }
 
 .field-row label {
   text-align: right;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .field-row input {
@@ -176,4 +178,47 @@ footer {
   border: 1px solid #374151;
   background: #0f172a;
   color: #e5e7eb;
+}
+
+/* Slider */
+
+.field-row.inertia-tools {
+  grid-template-columns: 1fr;
+  justify-items: end;
+}
+
+.inertia-tools-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.inertia-tools-wrap input[type="range"] {
+  width: 100%;
+  padding: 0.25rem 0;
+}
+
+.inertia-presets {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+}
+
+.inertia-presets button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.25rem 0.25rem;
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background: #111827;
+  color: #e5e7eb;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.inertia-presets button:hover {
+  background: #1f2937;
 }
