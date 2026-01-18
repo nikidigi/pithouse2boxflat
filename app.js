@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inertiaSlider.value = inertiaInput.value;
 
   inertiaInput.addEventListener('input', () => {
+    inertiaSlider.value = inertiaInput.value;
     localStorage.setItem('inertiaValue', inertiaInput.value);
   });
 
